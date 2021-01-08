@@ -8,6 +8,7 @@ import { Button, Grid } from '@material-ui/core/';
 import { StoreContext } from './store';
 import { useLoadDataType } from './api';
 import BookList from './BookList';
+import BookDetail from './BookDetail';
 
 function App() {
   const currentRoute = useRouteMatch();
@@ -16,6 +17,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path={'/books/:bookId'}>
+          <BookDetail />
+        </Route>
         <Route path="/books">
           <BookList />
         </Route>

@@ -1,10 +1,5 @@
 import { useContext } from 'react';
-import {
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   IconButton,
   GridList,
@@ -13,11 +8,9 @@ import {
 } from '@material-ui/core/';
 import InfoIcon from '@material-ui/icons/Info';
 import { StoreContext } from './store';
-import BookDetail from './BookDetail';
 
 export default function BookList() {
   const { books: [bookList] } = useContext(StoreContext);
-  const currentRoute = useRouteMatch();
   const iconButtonStyle = {
     color: 'rgba(255, 255, 255, 0.54)',
   };
@@ -34,12 +27,12 @@ export default function BookList() {
         {bookList.map(book => (
           <GridListTile key={book.id}>
             <img src={book.cover} alt={`${book.title} cover`} />
-            <Link to={`${currentRoute.url}/${book.id}`}>{book.title}</Link>
+            <Link to={`/books/${book.id}`}>{book.title}</Link>
             <GridListTileBar
               title={book.title}
-              subtitle={<span>by: {book.author}</span>}
+              subtitle={<span>by {book.author}</span>}
               actionIcon={
-                <IconButton aria-label={`More info about ${book.title}`} style={iconButtonStyle} component={Link} to={`${currentRoute.url}/${book.id}`}>
+                <IconButton aria-label={`More info about ${book.title}`} style={iconButtonStyle} component={Link} to={`/books/${book.id}`}>
                   <InfoIcon />
                 </IconButton>
               }
@@ -47,11 +40,6 @@ export default function BookList() {
           </GridListTile>
         ))}
       </GridList>
-      <Switch>
-        <Route path={`${currentRoute.path}/:bookId`}>
-          <BookDetail />
-        </Route>
-      </Switch>
     </div>
   );
 }
