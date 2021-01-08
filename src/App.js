@@ -4,6 +4,7 @@ import {
   Link,
   useRouteMatch
 } from 'react-router-dom';
+import { Button, Grid } from '@material-ui/core/';
 import { StoreContext } from './store';
 import { useLoadDataType } from './api';
 import BookList from './BookList';
@@ -15,11 +16,21 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path='/books'>
+        <Route path="/books">
           <BookList />
         </Route>
         <Route path={currentRoute.path}>
-          <Link to="/books">Book List</Link>
+          <Grid container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '100vh' }}
+          >
+            <Grid item>
+              <Button color="primary" variant="contained" component={Link} to="/books">Book List</Button>
+            </Grid>
+          </Grid>
         </Route>
       </Switch>
     </div>
