@@ -5,6 +5,7 @@ import {
   useRouteMatch
 } from 'react-router-dom';
 import { Button, Grid } from '@material-ui/core/';
+import { github } from './config';
 import { StoreContext } from './store';
 import { useLoadDataType } from './api';
 import BookList from './BookList';
@@ -12,6 +13,9 @@ import BookDetail from './BookDetail';
 
 function App() {
   const currentRoute = useRouteMatch();
+  const buttonLinkStyle = {
+    textTransform: 'none'
+  };
   useLoadDataType('books', StoreContext);
 
   return (
@@ -33,6 +37,9 @@ function App() {
           >
             <Grid item>
               <Button color="primary" variant="outlined" size="large" component={Link} to="/books">Book List</Button>
+            </Grid>
+            <Grid item>
+              <Button color="primary" style={buttonLinkStyle} href={`https://github.com/${github.userName}/${github.repositoryName}`}>by @{github.userName}</Button>
             </Grid>
           </Grid>
         </Route>
