@@ -34,7 +34,7 @@ export default function BookDetail() {
       <CardHeader
         title={book.title}
         subheader={`by ${book.author}`}
-        action={<Button variant="outlined" component={Link} to='/books'>Back</Button>}
+        action={<Button variant="outlined" component={Link} to='/books'>Book list</Button>}
       />
       <CardMedia
         style={cardMediaStyle}
