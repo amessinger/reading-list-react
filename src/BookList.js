@@ -12,7 +12,7 @@ import { StoreContext } from './store';
 export default function BookList() {
   const { books: [bookList] } = useContext(StoreContext);
   const iconButtonStyle = {
-    color: 'rgba(255, 255, 255, 0.54)',
+    color: 'rgba(255, 255, 255, 0.54)'
   };
 
   if (!bookList?.length) {

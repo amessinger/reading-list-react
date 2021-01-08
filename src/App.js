@@ -32,7 +32,7 @@ function App() {
             style={{ minHeight: '100vh' }}
           >
             <Grid item>
-              <Button color="primary" variant="contained" component={Link} to="/books">Book List</Button>
+              <Button color="primary" variant="outlined" size="large" component={Link} to="/books">Book List</Button>
             </Grid>
           </Grid>
         </Route>
