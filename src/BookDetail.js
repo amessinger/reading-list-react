@@ -40,7 +40,7 @@ export default function BookDetail() {
         image={book.cover}
         title={`${book.title} cover`}
       />
-      <CardContent>{book.description}</CardContent>
+      <CardContent>{book.description ? book.description : 'No description.'}</CardContent>
       <List dense={true}>
         <ListItem>
           <ListItemText primary="Publisher" secondary={book.publisher} />
