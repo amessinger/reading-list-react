@@ -10,6 +10,7 @@ import { StoreContext } from './store';
 import { useLoadDataType } from './api';
 import BookList from './BookList';
 import BookDetail from './BookDetail';
+import './App.css';
 
 function App() {
   const currentRoute = useRouteMatch();
