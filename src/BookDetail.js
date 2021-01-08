@@ -16,6 +16,7 @@ export default function BookDetail() {
   const { books: [bookList] } = useContext(StoreContext);
   const { bookId } = useParams();
   const book = bookList.find(book => book.id === bookId);
+  const booksBySameAuthor = bookList.filter(b => b.id !== book.id && b.author === book.author);
   const cardMediaStyle = {
     height: 0,
     paddingTop: '56.25%',
@@ -48,6 +49,13 @@ export default function BookDetail() {
         <ListItem>
           <ListItemText primary="ISBN" secondary={book.isbn} />
         </ListItem>
+        <ListItem>
+          <ListItemText primary="By the same author" />
+        </ListItem>
+        {booksBySameAuthor.length
+          ? booksBySameAuthor.map(book => <ListItem key={book.id} component={Link} to={`/books/${book.id}`}><ListItemText primary={book.title} /></ListItem>)
+          : <ListItem><ListItemText primary="None" /></ListItem>
+        }
       </List>
     </Card>
   );
