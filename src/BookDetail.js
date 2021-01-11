@@ -11,12 +11,13 @@ import {
   ListItemText
 } from '@material-ui/core';
 import { StoreContext } from './store';
+import { getBooksBySameAuthor } from './selectors';
 
 export default function BookDetail() {
-  const { books: [bookList] } = useContext(StoreContext);
+  const { state } = useContext(StoreContext);
   const { bookId } = useParams();
-  const book = bookList.find(book => book.id === bookId);
-  const booksBySameAuthor = bookList.filter(b => b.id !== book.id && b.author === book.author);
+  const book = state.books.find(book => book.id === bookId);
+  const booksBySameAuthor = getBooksBySameAuthor(state, book);
   const cardMediaStyle = {
     height: 0,
     paddingTop: '56.25%',
@@ -36,6 +37,7 @@ export default function BookDetail() {
       </div>
     );
   }
+
   return (
     <>
       <Card data-test="BookDetail">

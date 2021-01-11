@@ -1,13 +1,18 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
+import reducer from './reducer';
+
+const initialState = {
+  books: []
+};
 
 export const StoreContext = createContext(null);
 
 export default function Store({ children }) {
-
-  const [books, setBooks] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const store = {
-    books: [books, setBooks]
+    state,
+    dispatch
   };
 
   return (

@@ -10,21 +10,23 @@ import InfoIcon from '@material-ui/icons/Info';
 import { StoreContext } from './store';
 
 export default function BookList() {
-  const { books: [bookList] } = useContext(StoreContext);
+  const { state } = useContext(StoreContext);
   const iconButtonStyle = {
     color: 'rgba(255, 255, 255, 0.54)'
   };
 
-  if (!bookList?.length) {
-    <div data-test="BookList">
-      Loading Books
-    </div>
+  if (!state.books?.length) {
+    return (
+      <div data-test="BookList">
+        Loading Books
+      </div>
+    );
   }
 
   return (
     <div data-test="BookList">
       <GridList>
-        {bookList.map(book => (
+        {state.books.map(book => (
           <GridListTile key={book.id}>
             <img src={book.cover} alt={`${book.title} cover`} />
             <Link to={`/books/${book.id}`}>{book.title}</Link>

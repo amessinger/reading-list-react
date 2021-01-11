@@ -1,16 +1,15 @@
 import { useContext, useEffect } from 'react';
-import { dataTypeUrls } from './config';
+import { dataUrl } from './config';
+import { setBooks } from './actions';
 
-export function useLoadDataType(type, context) {
-  const {
-    [type]: [, setData]
-  } = useContext(context);
+export function useLoadBooks(context) {
+  const { dispatch } = useContext(context);
 
   useEffect(() => {
-    fetch(dataTypeUrls[type])
+    fetch(dataUrl)
       .then(response => response.json())
-      .then(payload => {
-        setData(payload[type]);
+      .then(({ books }) => {
+        setBooks(dispatch, books);
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

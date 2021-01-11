@@ -7,7 +7,7 @@ import {
 import { Button, Grid } from '@material-ui/core/';
 import { github } from './config';
 import { StoreContext } from './store';
-import { useLoadDataType } from './api';
+import { useLoadBooks } from './api';
 import BookList from './BookList';
 import BookDetail from './BookDetail';
 import './App.css';
@@ -17,7 +17,7 @@ function App() {
   const buttonLinkStyle = {
     textTransform: 'none'
   };
-  useLoadDataType('books', StoreContext);
+  useLoadBooks(StoreContext);
 
   return (
     <div className="App">
