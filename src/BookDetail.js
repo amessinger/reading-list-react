@@ -50,13 +50,13 @@ export default function BookDetail() {
           image={book.cover}
           title={`${book.title} cover`}
         />
-        <CardContent>{book.description ? book.description : 'No description.'}</CardContent>
+        <CardContent>{book.description || 'No description.'}</CardContent>
         <List dense={true}>
           <ListItem>
-            <ListItemText primary="Publisher" secondary={book.publisher} />
+            <ListItemText primary="Publisher" secondary={book.publisher || 'Unknown'} />
           </ListItem>
           <ListItem>
-            <ListItemText primary="ISBN" secondary={book.isbn} />
+            <ListItemText primary="ISBN" secondary={book.isbn || 'Unknown'} />
           </ListItem>
           <ListItem>
             <ListItemText primary="By the same author" />
