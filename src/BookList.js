@@ -27,14 +27,13 @@ export default function BookList() {
     <div data-test="BookList">
       <GridList>
         {state.books.map(book => (
-          <GridListTile key={book.id}>
+          <GridListTile key={book.id} component={Link} to={`/books/${book.id}`}>
             <img src={book.cover} alt={`${book.title} cover`} />
-            <Link to={`/books/${book.id}`}>{book.title}</Link>
             <GridListTileBar
               title={book.title}
               subtitle={<span>by {book.author}</span>}
               actionIcon={
-                <IconButton aria-label={`More info about ${book.title}`} style={iconButtonStyle} component={Link} to={`/books/${book.id}`}>
+                <IconButton aria-label={`More info about ${book.title}`} style={iconButtonStyle}>
                   <InfoIcon />
                 </IconButton>
               }
